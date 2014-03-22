@@ -1,10 +1,5 @@
-dont-stab-me
-============
-
 Don't STAB Me! - A jQuery Game
-
 ============
-
 
 Hello and welcome to Don't Stab Me! 
 Originally intended for use as a satirical crime-rate statistics website, "Don't Stab Me!" turned into a (much smaller-scale) weekend web project.
