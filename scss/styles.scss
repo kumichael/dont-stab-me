@@ -1,0 +1,163 @@
+@import "compass/reset";
+@import "compass/css3";
+@import url(http://fonts.googleapis.com/css?family=Covered+By+Your+Grace);
+
+$grey: #363636;
+
+*{
+	@include box-sizing(border-box);
+}
+
+html, body{
+	font-family: Verdana, Geneva, sans-serif;
+	color: white;
+	background: $grey;
+}
+
+p{
+	color: #ddd;
+	margin: 10px 0
+}
+
+a{
+	color: white;
+	text-decoration: none;
+
+	&:hover{
+		color: red;
+	}
+}
+
+strong{
+	font-weight: bold;
+}
+
+.container{
+	max-width: 1120px;
+	width: 100%;
+	margin: auto;
+	padding: 0 20px;
+	overflow: hidden;
+}
+
+#title{
+	h1{
+		font-family: 'Covered By Your Grace', cursive;
+		font-size: 5em;
+		text-align: center;
+		margin: 20px 0 10px 0;
+
+		em{
+			color: red;
+		}
+	}
+
+	h2{
+		font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+		font-size: 0.8em;
+		text-align: center;
+	}
+}
+
+#stabby{
+	height: 250px;
+	margin-top: 20px;
+	position: relative;
+	background:{
+		color: black;
+		image: url('../img/stabby.jpg');
+		position: bottom center;
+		repeat: no-repeat;
+	}
+}
+
+#overlay{
+	display: none;
+
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+}
+
+#message{
+	max-width: 500px;
+	width: 100%;
+	color: white;
+	text-align: center;
+	background: darkred;
+	padding: 20px;
+	margin: 50px auto;
+
+	h1{
+		font-family: 'Covered By Your Grace', cursive;
+		font-size: 2.5em;
+		margin-bottom: 20px;
+	}
+
+	a{
+		background: black;
+		display: inline-block;
+		padding: 10px;
+	}
+}
+
+#scorebar{
+	position: absolute;
+	z-index: 2;
+}
+
+#score-keeper{
+	font-size: 0.8em;
+	background: black;
+	display: inline-block;
+	margin: 10px 0;
+	padding: 10px;
+}
+
+#score-multiplier{
+	display: none;
+	color: red;
+}
+
+#victims{
+	max-width: 100%;
+	margin: 100px auto;
+	overflow: hidden;
+}
+
+.victim{
+	width: 20%;
+	text-align: center;
+	float: left;
+}
+
+div[id^='stab-']{
+	display: inline-block;
+	cursor: pointer;
+}
+
+.stabbed{
+	opacity: 0.5;
+}
+
+.dead{
+	color: darkred !important;
+}
+
+#info{
+	font-size: 0.8em;
+	line-height: 1.5em;
+	margin-bottom: 20px;
+	padding: 20px;
+}
+
+#footer{
+	color: #ccc;
+	font-size: .75em;
+	text-align: center;
+	margin: 20px 0;
+}
