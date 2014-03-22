@@ -38,8 +38,8 @@ function updateMultiplier(){
 }
 
 function reset(){
-	$('#overlay').hide();
 	$('div[id^="stab-"]').removeClass('stabbed').removeClass('dead');
+	$('#overlay').hide();
 	chosen = 0;
 	lose = false;
 	randomVictim(5);
@@ -65,6 +65,10 @@ function fullReset(){
 
 	multiplier = 1;
 	updateMultiplier();
+
+	lives = 0;
+	updateLives();
+
 	$('#score-multiplier').fadeOut();
 }
 
@@ -72,7 +76,8 @@ function startElim(){
 
 	/* On victim click... */
 	$('div[id^="stab-"]').on('click', function(e){
-		
+		$(this).unbind();
+
 		/* Get victim number */
 		var victimClicked = $(this).attr('id');
 		victimClicked = victimClicked.replace(/\D/g,'');
@@ -89,8 +94,6 @@ function startElim(){
 			$(this).addClass('dead');
 			if(lives <= 0){
 				lose = true;
-				gameOver(lose);
-				$('div[id^="stab-"]').unbind( "click" );
 			}
 			else{
 				minusLives();
@@ -107,8 +110,10 @@ function elimWinCheck(){
 		var totalVictims = $('.stabbed').length;
 		if(totalVictims >= elimVictims - 1){
 			gameOver(lose);
-			$('div[id^="stab-"]').unbind( "click" );
 		}
+	}
+	else{
+		gameOver(lose);
 	}
 }
 
@@ -120,6 +125,7 @@ function minusLives(){
 
 	$('#message a').on('click', function(e){
 		e.preventDefault();
+		$(this).unbind();
 
 		lives--;
 		updateLives();
@@ -128,6 +134,8 @@ function minusLives(){
 }
 
 function gameOver(lose){
+	$('div[id^="stab-"]').unbind( "click" );
+
 	var message;
 
 	if(lose){
@@ -142,6 +150,7 @@ function gameOver(lose){
 
 	$('#message a').on('click', function(e){
 		e.preventDefault();
+		$(this).unbind();
 
 		var buttonClicked = $(this).attr('href');
 		buttonClicked = buttonClicked.slice(1);
@@ -150,8 +159,8 @@ function gameOver(lose){
 			fullReset();
 		}
 		else{
-			reset();
 			nextRound();
+			reset();
 		}
 	})
 }
