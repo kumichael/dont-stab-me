@@ -38,6 +38,7 @@ strong{
 	margin: auto;
 	padding: 0 20px;
 	overflow: hidden;
+	position: relative;
 }
 
 #title{
@@ -95,17 +96,25 @@ strong{
 	h1{
 		font-family: 'Covered By Your Grace', cursive;
 		font-size: 2.5em;
-		margin-bottom: 20px;
+		margin-bottom: 10px;
+	}
+
+	h2{
+		font-size: 0.8em;
+		margin-bottom: 10px;
 	}
 
 	a{
 		background: black;
 		display: inline-block;
+		margin-top: 10px;
 		padding: 10px;
 	}
 }
 
 #scorebar{
+	width: calc(100% - 40px);
+	color: white;
 	position: absolute;
 	z-index: 2;
 }
@@ -113,7 +122,15 @@ strong{
 #score-keeper{
 	font-size: 0.8em;
 	background: black;
-	display: inline-block;
+	float: left;
+	margin: 10px 0;
+	padding: 10px;
+}
+
+#lives-keeper{
+	font-size: 0.8em;
+	background: black;
+	float: right;
 	margin: 10px 0;
 	padding: 10px;
 }
@@ -125,7 +142,7 @@ strong{
 
 #victims{
 	max-width: 100%;
-	margin: 100px auto;
+	margin: 85px auto;
 	overflow: hidden;
 }
 

@@ -1,10 +1,13 @@
-var chosen = 0;
-var score = 0;
-var multiplier = 1;
+/* Variables */
+var chosen = 0; /* target */
+var score = 0; 
+var multiplier = 1; /* score multiplier */
+var lives = 0;
 var lose = false;
 var elimVictims = 5; /* default */
 
 var scoreDiv = $('#score');
+var livesDiv = $('#lives');
 var multiplierDiv = $('#multiplier');
 
 $(function(){
@@ -12,6 +15,8 @@ $(function(){
 
 	/* Generate Random Victim */
 	randomVictim(5);
+
+	/* Start Elimination Game */
 	startElim();
 })
 
@@ -22,6 +27,10 @@ function randomVictim(max){
 
 function updateScore(){
 	scoreDiv.html(score);
+}
+
+function updateLives(){
+	livesDiv.html(lives);
 }
 
 function updateMultiplier(){
@@ -43,7 +52,10 @@ function nextRound(){
 	}
 
 	multiplier++;
-	multiplierDiv.html(multiplier);
+	updateMultiplier();
+
+	lives++;
+	updateLives();
 }
 
 function fullReset(){
@@ -52,7 +64,7 @@ function fullReset(){
 	updateScore();
 
 	multiplier = 1;
-	multiplierDiv.html(multiplier);
+	updateMultiplier();
 	$('#score-multiplier').fadeOut();
 }
 
@@ -60,10 +72,12 @@ function startElim(){
 
 	/* On victim click... */
 	$('div[id^="stab-"]').on('click', function(e){
+		
 		/* Get victim number */
 		var victimClicked = $(this).attr('id');
 		victimClicked = victimClicked.replace(/\D/g,'');
 
+		/* If victim is not target */
 		if(victimClicked != chosen){
 			if(!$(this).hasClass('stabbed')){
 				$(this).addClass('stabbed');
@@ -73,9 +87,14 @@ function startElim(){
 
 		else{
 			$(this).addClass('dead');
-			lose = true;
-			gameOver(lose);
-			$('div[id^="stab-"]').unbind( "click" );
+			if(lives <= 0){
+				lose = true;
+				gameOver(lose);
+				$('div[id^="stab-"]').unbind( "click" );
+			}
+			else{
+				minusLives();
+			}
 		}
 
 		updateScore();
@@ -93,14 +112,29 @@ function elimWinCheck(){
 	}
 }
 
+function minusLives(){
+	message = '<h1>Oh, no! You got him!</h1><h2>But it\'s okay. You\'ve still got lives.</h2><a href="#retry">Retry</a>';
+
+	$('#message').html(message);
+	$('#overlay').delay(250).fadeIn();
+
+	$('#message a').on('click', function(e){
+		e.preventDefault();
+
+		lives--;
+		updateLives();
+		reset();
+	})	
+}
+
 function gameOver(lose){
 	var message;
 
 	if(lose){
-		message = '<h1>Oh, no! You got him!</h1><a href="#retry">Retry</a>';
+		message = '<h1>Oh, no! You got him!</h1><a href="#retry">Start Over</a>';
 	}
 	else{
-		message = '<h1>Nice Failure!</h1><a href="#continue">Next Target</a>';
+		message = '<h1>Nice Failure!</h1><h2>Lives +1</h2><a href="#continue">Next Target</a>';
 	}
 
 	$('#message').html(message);
