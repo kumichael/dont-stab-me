@@ -14,10 +14,23 @@ var multiplierDiv = $('#multiplier');
 $(function(){
 	/* FitText for heading */
 	$('#title h1').fitText();
+	$('#title h2').fitText(3);
+
+	$('#menu .button').on('click', function(e){
+		e.preventDefault();
+		var menuClicked = $(this).attr('href');
+		$('.view').hide();
+		$(menuClicked).fadeIn();
+	})
+
+	$('.back').on('click', function(e){
+		$('.view').hide();
+		$('#menu').fadeIn();
+		fullReset();
+	})
 
 	/* Generate 5 random victims */
 	randomVictim(5);
-
 	/* Start Elimination game (Game mode 1) */
 	startElim();
 })
@@ -146,7 +159,7 @@ function elimWinCheck(){
 }
 
 function minusLives(){
-	message = '<h1>Oh, no! You got him!</h1><h2>But it\'s okay. You\'ve still got lives.</h2><a href="#retry">Retry</a>';
+	message = '<h1>Mistakes happen.</h1><h2>It\'s okay. You\'ve still got lives.</h2><a href="#retry">Retry</a>';
 
 	/* Display message */
 	$('#message').html(message);
@@ -172,10 +185,10 @@ function gameOver(lose){
 
 	var message;
 	if(lose){
-		message = '<h1>Oh, no! You got him!</h1><h2>Final Score: '+score+'</h2><a href="#retry">Start Over</a>';
+		message = '<h1>Oh, no! You got him!</h1><h2>Final Score: '+score+'</h2><a href="#retry">Try again</a>';
 	}
 	else{
-		message = '<h1>Nice Failure!</h1><h2>Lives +1</h2><a href="#continue">Next Target</a>';
+		message = '<h1>Nice Failure!</h1><h2>Lives +1</h2><a href="#continue">Next target</a>';
 	}
 
 	$('#message').html(message);

@@ -3,52 +3,64 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<title>Don't Stab Me! - A jQuery Web Game</title>
+	<title>Don't Stab Me! - A Crocodile Dentist-esque Game about Stabbing People</title>
 	<meta name="description" content="Play as the world's worst assassin and utterly fail your mission by stabbing everyone but your intended target.">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-	<div id="title">
-		<h1>Don't <em>STAB</em> Me!</h1>
-		<h2>The World's Worst Assassin</h2>
-	</div>
-
-	<div id="stabby">
-		<div class="container">
-			<div id="overlay"><div id="message"></div></div>
-			<div id="scorebar">
-				<span id="score-keeper">
-					<i class="fa fa-trophy"></i> <strong>Score:</strong> <span id="score">0</span> <span id="score-multiplier">&times; <span id="multiplier">1</span></span>
-				</span>
-				<span id="lives-keeper">
-					<i class="fa fa-medkit"></i> <strong>Lives:</strong> <span id="lives">0</span></span>
-				</span>
-			</div>
-			<div id="victims">
-				<div class="victim"><div id="stab-1"><i class="fa fa-male fa-5x"></i></div></div>
-				<div class="victim"><div id="stab-2"><i class="fa fa-male fa-5x"></i></div></div>
-				<div class="victim"><div id="stab-3"><i class="fa fa-male fa-5x"></i></div></div>
-				<div class="victim"><div id="stab-4"><i class="fa fa-male fa-5x"></i></div></div>
-				<div class="victim"><div id="stab-5"><i class="fa fa-male fa-5x"></i></div></div>
-			</div>
-		</div>
-	</div>
-
-
-	<div class="container">
-		<div id="info">
-			<strong>Hello and welcome to Don't Stab Me!</strong> <br>
-			<p>
-				Originally intended for use as a satirical crime-rate statistics website, "Don't Stab Me!" turned into a (much smaller-scale) weekend web project.
-			</p>
-			<p>In this luck-based game, you play as the world's worst assassin. With a 0% hit rate, you have failed every assassination mission you have received to date. Your goal is not to stab the correct target, but instead, accidentally stab everyone else.
-			</p>
-			<p>Completing, or rather, failing a round grants you +1 life which will give you an extra chance in the rounds to come. The points you gain also increase by 1 per completed round, as denoted by the current round's multiplier next to your current score.</p>
+	<div id="stab">
+		<div id="title">
+			<h1><a href="/">Don't <em>STAB</em> Me!</a></h1>
+			<h2>The World's Worst Assassin</h2>
 		</div>
 
-		<div id="footer">
-			Created by <a href="http://michaelku.com">Michael Ku</a>
+		<div id="stabby">
+			<div id="menu" class="view">
+				<a href="#elim" class="button"> Start </a>
+				<a href="#about" class="button"> About </a>
+				<a href="#instructions" class="button"> Instructions </a>
+			</div>
+
+			<div id="elim" class="view">
+				<div class="back-bar"><span class="back">&#8617;</span></div>
+				<div id="overlay"><div id="message"></div></div>
+				<div id="scorebar">
+					<span id="score-keeper">
+						<i class="fa fa-trophy"></i> <strong>Score:</strong> <span id="score">0</span> <span id="score-multiplier">&times; <span id="multiplier">1</span></span>
+					</span>
+					<span id="lives-keeper">
+						<i class="fa fa-medkit"></i> <strong>Lives:</strong> <span id="lives">0</span></span>
+					</span>
+				</div>
+				<div id="victims">
+					<div class="victim"><div id="stab-1"><i class="fa fa-male fa-5x"></i></div></div>
+					<div class="victim"><div id="stab-2"><i class="fa fa-male fa-5x"></i></div></div>
+					<div class="victim"><div id="stab-3"><i class="fa fa-male fa-5x"></i></div></div>
+					<div class="victim"><div id="stab-4"><i class="fa fa-male fa-5x"></i></div></div>
+					<div class="victim"><div id="stab-5"><i class="fa fa-male fa-5x"></i></div></div>
+				</div>
+			</div>
+
+			<div id="about" class="view">
+				<div class="back-bar"><span class="back">&#8617;</span></div>
+				<h1>About</h1>
+				<p>
+					"Don't STAB Me!" is a jQuery game based off of <a href="http://en.wikipedia.org/wiki/Crocodile_Dentist" target="_blank">Crocodile Dentist</a> although I've been trying to come up with features that would make it less of a clone and more of a homage.
+				</p>
+				<p>Created by <a href="http://michaelku.com" target="_blank">Michael Ku</a></p>
+			</div>
+
+			<div id="instructions" class="view">
+				<div class="back-bar"><span class="back">&#8617;</span></div>
+				<h1>Instructions</h1>
+				<p>
+					In this luck-based game, you play as the world's worst assassin. With a 0% hit rate, you have failed every assassination mission you have received to date. Your goal is not to stab the correct target, but instead, accidentally stab everyone else.
+				</p>
+				<p>
+					Completing, or rather, failing a round grants you +1 life which will give you an extra chance in the rounds to come. The points you gain also increase by 1 per completed round, as denoted by the current round's multiplier next to your current score.
+				</p>
+			</div>
 		</div>
 	</div>
 

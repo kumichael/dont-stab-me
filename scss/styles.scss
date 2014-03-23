@@ -1,30 +1,31 @@
 @import "compass/reset";
 @import "compass/css3";
-@import url(http://fonts.googleapis.com/css?family=Covered+By+Your+Grace);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
 
 $grey: #363636;
+$red: #cc0000;
 
 *{
 	@include box-sizing(border-box);
 }
 
 html, body{
-	font-family: Verdana, Geneva, sans-serif;
 	color: white;
-	background: $grey;
+	font-family: 'Roboto', sans-serif;
 }
 
 p{
-	color: #ddd;
+	color: white;
+	font-size: .85em;
+	line-height: 1.75em;
 	margin: 10px 0
 }
 
 a{
 	color: white;
-	text-decoration: none;
 
 	&:hover{
-		color: red;
+		color: $red;
 	}
 }
 
@@ -32,29 +33,72 @@ strong{
 	font-weight: bold;
 }
 
-.container{
+h1{
+	font-size: 1.2em;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.view{
 	max-width: 1120px;
 	width: 100%;
-	margin: auto;
-	padding: 0 20px;
-	overflow: hidden;
+	margin: 25px auto 0 auto;
+	padding: 20px;
 	position: relative;
 }
 
+.back-bar{
+	font-size: 1.5em;
+
+}
+
+.back{
+	cursor: pointer;
+}
+
+#elim, #about, #instructions{
+	display: none;
+}
+
+#stab{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	overflow: auto;
+
+	background:{
+		color: black;
+		image: url('../img/stabby.jpg');
+		position: bottom center;
+		repeat: no-repeat;
+		size: cover;
+	}
+}
+
 #title{
+	a{
+		text-decoration: none;
+
+		&:hover{
+			color: #ddd;		
+		}
+	}
+
 	h1{
-		font-family: 'Covered By Your Grace', cursive;
 		font-size: 5em;
 		text-align: center;
 		margin: 20px 0 10px 0;
 
 		em{
-			color: red;
+			color: $red;
+			font-weight: bold;
 		}
 	}
 
 	h2{
-		font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 		font-size: 0.8em;
 		text-align: center;
 	}
@@ -64,11 +108,25 @@ strong{
 	height: 250px;
 	margin-top: 20px;
 	position: relative;
-	background:{
-		color: black;
-		image: url('../img/stabby.jpg');
-		position: bottom center;
-		repeat: no-repeat;
+}
+
+/* Menu */
+#menu{
+	.button{
+		width: 50%;
+		color: white;
+		font-size: 1em;
+		text-align: center;
+		text-decoration: none;
+		display: block;
+		margin: 10px auto;
+		padding: 15px;
+
+		cursor: pointer;
+
+		&:hover{
+			color: $red;
+		}
 	}
 }
 
@@ -77,7 +135,6 @@ strong{
 
 	width: 100%;
 	height: 100%;
-	background: rgba(0, 0, 0, 0.5);
 	position: absolute;
 	z-index: 1;
 	top: 0;
@@ -91,11 +148,10 @@ strong{
 	text-align: center;
 	background: darkred;
 	padding: 20px;
-	margin: 50px auto;
+	margin: 75px auto;
 
 	h1{
-		font-family: 'Covered By Your Grace', cursive;
-		font-size: 2.5em;
+		font-size: 2em;
 		margin-bottom: 10px;
 	}
 
@@ -105,9 +161,9 @@ strong{
 	}
 
 	a{
+		text-decoration: none;
 		background: black;
 		display: inline-block;
-		margin-top: 10px;
 		padding: 10px;
 	}
 }
